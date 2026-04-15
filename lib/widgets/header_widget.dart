@@ -7,28 +7,30 @@ class HeaderWidget extends StatelessWidget {
   final String titel;
   final String subtitel;
   final bool showImage;
+  final double? height;
 
   const HeaderWidget({
     super.key,
     required this.titel,
     required this.subtitel,
     required this.showImage,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    double maxAppbarHeight = min((screenHeight * 0.13), 1500);
-    double maxProfileImageRadius = min(maxAppbarHeight * 0.3, 40);
+    double maxAppbarHeight = height ?? min((screenHeight * 0.13), 130);
     return Container(
       width: double.infinity,
-      height: maxAppbarHeight,
+      constraints: BoxConstraints(minHeight: maxAppbarHeight),
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
+        border: Border.all(color: Colors.blue, width: 1.5),
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(50),
-          topRight: Radius.circular(50),
+          bottomLeft: Radius.circular(40),
+          topRight: Radius.circular(40),
         ),
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -40,46 +42,58 @@ class HeaderWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
+          Flexible(
+            fit: FlexFit.tight,
             child: Column(
               crossAxisAlignment: showImage
                   ? CrossAxisAlignment.start
                   : CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  titel,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: RichText(
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                Text(
-                  subtitel,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    overflow: TextOverflow.ellipsis,
+                    text: TextSpan(
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      text: titel,
+                      children: [
+                        TextSpan(text: '\n'),
+                        TextSpan(
+                          text: subtitel,
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
             ),
           ),
           if (showImage) ...[
-            GestureDetector(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Profile()),
-              ),
-              child: CircleAvatar(
-                radius: maxProfileImageRadius,
-                backgroundColor: Colors.white,
-                foregroundImage: NetworkImage(
-                  "https://avatars.githubusercontent.com/u/141134460?s=96&v=4",
+            Flexible(
+              child: GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Profile()),
                 ),
-                onForegroundImageError: (exception, stackTrace) {},
-                child: Icon(Icons.person, color: Colors.black),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Colors.white,
+                    foregroundImage: NetworkImage(
+                      "https://avatars.githubusercontent.com/u/141134460?s=96&v=4",
+                    ),
+                    onForegroundImageError: (exception, stackTrace) {},
+                    child: Icon(Icons.person, color: Colors.black),
+                  ),
+                ),
               ),
             ),
             SizedBox(width: 20),
