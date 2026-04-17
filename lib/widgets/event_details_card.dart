@@ -18,7 +18,7 @@ class EventDetailsCard extends StatelessWidget {
           color: Colors.white24
         ),
         child: const SizedBox(
-          width: 300,
+          width: 360,
           height: 200,
           child: Text('data', textAlign: TextAlign.center),
         ),

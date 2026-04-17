@@ -3,8 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:stundenplan_pdf_frontend/widgets/event_details_card.dart';
 import 'package:stundenplan_pdf_frontend/widgets/header_widget.dart';
 
-class Dashboard extends StatelessWidget {
-  const Dashboard({super.key});
+class DashboardMobile extends StatelessWidget {
+  const DashboardMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
