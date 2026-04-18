@@ -22,38 +22,50 @@ class DashboardMobile extends StatelessWidget {
     PageController controller = PageController(viewportFraction: 0.8);
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              HeaderWidget(
-                titel: "Hallo ahmad",
-                subtitel: DateFormat('HH:mm dd.MM.yyyy').format(DateTime.now()),
-                showImage: true,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15),
-                child: Text(
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: (MediaQuery.of(context).size.width * 0.03).clamp(15, 30),
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  HeaderWidget(
+                    titel: "Hallo ahmad",
+                    subtitel: DateFormat(
+                      'HH:mm dd.MM.yyyy',
+                    ).format(DateTime.now()),
+                    showImage: true,
                   ),
-                  'Deine heutige Veranstaltungen:',
-                ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    child: Text(
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: (MediaQuery.of(context).size.width * 0.03)
+                            .clamp(15, 30),
+                      ),
+                      'Deine heutige Veranstaltungen:',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 300,
+                    child: PageView.builder(
+                      itemCount: items.length,
+                      controller: controller,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return items[index];
+                      },
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(
-                height: 300,
-                child: PageView.builder(
-                  itemCount: items.length,
-                  controller: controller,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return items[index];
-                  },
-                ),
-              ),
-              ThreeButtonsBar(
+            ),
+            Positioned(
+              left: 10,
+              bottom: 10,
+              right: 10,
+              child: ThreeButtonsBar(
                 firstButton: IconButton(
                   onPressed: () {},
                   color: Colors.white,
@@ -70,8 +82,8 @@ class DashboardMobile extends StatelessWidget {
                   icon: Icon(Icons.view_list_outlined),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
