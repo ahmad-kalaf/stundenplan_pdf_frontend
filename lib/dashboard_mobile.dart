@@ -1,8 +1,9 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:stundenplan_pdf_frontend/widgets/event_details_card.dart';
 import 'package:stundenplan_pdf_frontend/widgets/header_widget.dart';
-import 'package:stundenplan_pdf_frontend/widgets/horizontal_divider.dart';
 import 'package:stundenplan_pdf_frontend/widgets/three_buttons_bar.dart';
 
 class DashboardMobile extends StatelessWidget {
@@ -23,11 +24,23 @@ class DashboardMobile extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               HeaderWidget(
                 titel: "Hallo ahmad",
                 subtitel: DateFormat('HH:mm dd.MM.yyyy').format(DateTime.now()),
                 showImage: true,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15),
+                child: Text(
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: (MediaQuery.of(context).size.width * 0.03).clamp(15, 30),
+                  ),
+                  'Deine heutige Veranstaltungen:',
+                ),
               ),
               SizedBox(
                 height: 300,
