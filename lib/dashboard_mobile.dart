@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:stundenplan_pdf_frontend/widgets/event_details_card.dart';
 import 'package:stundenplan_pdf_frontend/widgets/header_widget.dart';
+import 'package:stundenplan_pdf_frontend/widgets/horizontal_divider.dart';
+import 'package:stundenplan_pdf_frontend/widgets/three_buttons_bar.dart';
 
 class DashboardMobile extends StatelessWidget {
   const DashboardMobile({super.key});
@@ -36,6 +38,23 @@ class DashboardMobile extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return items[index];
                   },
+                ),
+              ),
+              ThreeButtonsBar(
+                firstButton: IconButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  icon: Icon(Icons.add),
+                ),
+                secondButton: IconButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  icon: Icon(Icons.calendar_month_rounded),
+                ),
+                thirdButton: IconButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  icon: Icon(Icons.view_list_outlined),
                 ),
               ),
             ],
