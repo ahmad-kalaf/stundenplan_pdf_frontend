@@ -7,23 +7,27 @@ class HeaderWidget extends StatelessWidget {
   final String titel;
   final String subtitel;
   final bool showImage;
-  final double? height;
+  final double? preferredMinHeight;
 
   const HeaderWidget({
     super.key,
     required this.titel,
     required this.subtitel,
     required this.showImage,
-    this.height,
+    this.preferredMinHeight,
   });
 
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    double maxAppbarHeight = height ?? min((screenHeight * 0.13), 130);
+
+    double defaultHeaderHeight = min((screenHeight * 0.13), 130);
+    double minHeaderHeight = preferredMinHeight ?? defaultHeaderHeight;
+
+
     return Container(
       width: double.infinity,
-      constraints: BoxConstraints(minHeight: maxAppbarHeight),
+      constraints: BoxConstraints(minHeight: minHeaderHeight),
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
