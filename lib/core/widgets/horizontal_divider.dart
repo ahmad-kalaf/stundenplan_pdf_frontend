@@ -10,7 +10,7 @@ class HorizontalDivider extends StatelessWidget {
       width: 0.5,
       height: height,
       color: Colors.white,
-      margin: EdgeInsets.symmetric(horizontal: 12),
+      margin: const EdgeInsets.symmetric(horizontal: 12),
     );
   }
 }

@@ -8,6 +8,6 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDesktop = MediaQuery.of(context).size.width >= 450;
-    return isDesktop ? DashboardDesktop() : DashboardMobile();
+    return isDesktop ? const DashboardDesktop() : const DashboardMobile();
   }
 }

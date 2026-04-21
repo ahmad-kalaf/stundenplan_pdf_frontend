@@ -28,11 +28,11 @@ class HeaderWidget extends StatelessWidget implements PreferredSizeWidget {
       child: Container(
         width: double.infinity,
         height: height,
-        margin: EdgeInsets.all(10),
-        padding: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.blue, width: 1.5),
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(40),
             topRight: Radius.circular(40),
           ),
@@ -53,15 +53,15 @@ class HeaderWidget extends StatelessWidget implements PreferredSizeWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   text: TextSpan(
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       overflow: TextOverflow.ellipsis,
                     ),
                     text: titel,
                     children: [
-                      TextSpan(text: '\n'),
-                      TextSpan(text: subtitel, style: TextStyle(fontSize: 12)),
+                      const TextSpan(text: '\n'),
+                      TextSpan(text: subtitel, style: const TextStyle(fontSize: 12)),
                     ],
                   ),
                 ),
@@ -77,12 +77,12 @@ class HeaderWidget extends StatelessWidget implements PreferredSizeWidget {
                       radius: 40,
                       backgroundColor: Colors.white,
                       foregroundImage: imageProvider,
-                      child: Icon(Icons.person, color: Colors.black),
+                      child: const Icon(Icons.person, color: Colors.black),
                     ),
                   ),
                 ),
               ),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
             ],
           ],
         ),

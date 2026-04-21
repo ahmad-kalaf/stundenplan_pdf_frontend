@@ -30,12 +30,12 @@ class _DashboardMobileState extends State<DashboardMobile> {
   @override
   Widget build(BuildContext context) {
     final items = [
-      EventDetailsCard(),
-      EventDetailsCard(),
-      EventDetailsCard(),
-      EventDetailsCard(),
-      EventDetailsCard(),
-      EventDetailsCard(),
+      const EventDetailsCard(),
+      const EventDetailsCard(),
+      const EventDetailsCard(),
+      const EventDetailsCard(),
+      const EventDetailsCard(),
+      const EventDetailsCard(),
     ];
     return Scaffold(
       appBar: HeaderWidget(
@@ -80,8 +80,8 @@ class _DashboardMobileState extends State<DashboardMobile> {
                     ),
                     // platz für notizen
                     Container(
-                      padding: EdgeInsets.all(30),
-                      margin: EdgeInsets.all(30),
+                      padding: const EdgeInsets.all(30),
+                      margin: const EdgeInsets.all(30),
                       decoration: BoxDecoration(
                         color: Colors.white.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(10),
@@ -98,7 +98,7 @@ class _DashboardMobileState extends State<DashboardMobile> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 100),
+                    const SizedBox(height: 100),
                   ],
                 ),
               ),
@@ -111,17 +111,17 @@ class _DashboardMobileState extends State<DashboardMobile> {
                 firstButton: IconButton(
                   onPressed: () {},
                   color: Colors.white,
-                  icon: Icon(Icons.add),
+                  icon: const Icon(Icons.add),
                 ),
                 secondButton: IconButton(
                   onPressed: () {},
                   color: Colors.white,
-                  icon: Icon(Icons.calendar_month_rounded),
+                  icon: const Icon(Icons.calendar_month_rounded),
                 ),
                 thirdButton: IconButton(
                   onPressed: () {},
                   color: Colors.white,
-                  icon: Icon(Icons.view_list_outlined),
+                  icon: const Icon(Icons.view_list_outlined),
                 ),
               ),
             ),

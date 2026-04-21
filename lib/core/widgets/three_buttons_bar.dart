@@ -17,8 +17,8 @@ class ThreeButtonsBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(15),
-      padding: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(15),
+      padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(999),
         border: Border.all(color: Colors.blue),
@@ -31,7 +31,7 @@ class ThreeButtonsBar extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.white38,
             blurRadius: 20,
@@ -49,9 +49,9 @@ class ThreeButtonsBar extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           Flexible(child: firstButton),
-          HorizontalDivider(height: 30),
+          const HorizontalDivider(height: 30),
           Flexible(child: secondButton),
-          HorizontalDivider(height: 30),
+          const HorizontalDivider(height: 30),
           Flexible(child: thirdButton),
         ],
       ),
