@@ -1,5 +1,3 @@
-import 'dart:ui' as ui;
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:stundenplan_pdf_frontend/widgets/event_details_card.dart';
@@ -21,23 +19,25 @@ class DashboardMobile extends StatelessWidget {
     ];
     PageController controller = PageController(viewportFraction: 0.8);
     return Scaffold(
+      appBar: HeaderWidget(
+        titel: "Hallo ahmad",
+        subtitel: DateFormat('HH:mm dd.MM.yyyy').format(DateTime.now()),
+        showImage: true,
+      ),
       body: SafeArea(
         child: Stack(
           children: [
-            SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  HeaderWidget(
-                    titel: "Hallo ahmad",
-                    subtitel: DateFormat(
-                      'HH:mm dd.MM.yyyy',
-                    ).format(DateTime.now()),
-                    showImage: true,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15, right: 15),
-                    child: Text(
+            Positioned(
+              left: 10,
+              top: 10,
+              right: 10,
+              bottom: 0,
+              // 0 sorgt dafür, dass der Bereich bis hinter die three buttons bar geht
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: Colors.white,
@@ -46,19 +46,41 @@ class DashboardMobile extends StatelessWidget {
                       ),
                       'Deine heutige Veranstaltungen:',
                     ),
-                  ),
-                  SizedBox(
-                    height: 300,
-                    child: PageView.builder(
-                      itemCount: items.length,
-                      controller: controller,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return items[index];
-                      },
+                    // platz für heutige veranstaltungen, horizontal scrollbar
+                    SizedBox(
+                      height: 300,
+                      child: PageView.builder(
+                        itemCount: items.length,
+                        controller: controller,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return items[index];
+                        },
+                      ),
                     ),
-                  ),
-                ],
+                    // platz für notizen
+                    Container(
+                      padding: EdgeInsetsGeometry.all(30),
+                      margin: EdgeInsetsGeometry.all(30),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: Text(
+                          'Hier kannst du deine Notizen hinzufügen',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: (MediaQuery.of(context).size.width * 0.02)
+                                .clamp(10, 20),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 100),
+                  ],
+                ),
               ),
             ),
             Positioned(

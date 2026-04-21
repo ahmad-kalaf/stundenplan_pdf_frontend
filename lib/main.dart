@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDesktop = MediaQuery.of(context).size.width >= 450;
     return MaterialApp(
-      theme: ThemeData(scaffoldBackgroundColor: Colors.transparent),
+      theme: ThemeData(scaffoldBackgroundColor: Colors.transparent, bottomNavigationBarTheme: BottomNavigationBarThemeData(backgroundColor: Colors.transparent)),
       home: AppBackground(
         child: isDesktop ? DashboardDesktop() : DashboardMobile(),
       ),

@@ -6,7 +6,13 @@ class ThreeButtonsBar extends StatelessWidget {
   final IconButton firstButton;
   final IconButton secondButton;
   final IconButton thirdButton;
-  const ThreeButtonsBar({super.key, required this.firstButton, required this.secondButton, required this.thirdButton});
+
+  const ThreeButtonsBar({
+    super.key,
+    required this.firstButton,
+    required this.secondButton,
+    required this.thirdButton,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +24,8 @@ class ThreeButtonsBar extends StatelessWidget {
         border: Border.all(color: Colors.blue),
         gradient: LinearGradient(
           colors: [
-            Colors.grey.shade500,
-            Colors.grey.shade900,
+            Colors.grey.shade500.withValues(alpha: 0.7),
+            Colors.grey.shade900.withValues(alpha: 0.7),
             Colors.black,
           ],
           begin: Alignment.topCenter,
@@ -40,6 +46,7 @@ class ThreeButtonsBar extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Flexible(child: firstButton),
           HorizontalDivider(height: 30),
