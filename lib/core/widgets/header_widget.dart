@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:stundenplan_pdf_frontend/profile.dart';
 
 class HeaderWidget extends StatelessWidget implements PreferredSizeWidget {
   final String titel;
   final String subtitel;
-  final bool showImage;
   final double height;
+  final bool showImage;
+  final ImageProvider<Object>? imageProvider;
+  final VoidCallback? onTap;
 
   const HeaderWidget({
     super.key,
     required this.titel,
     required this.subtitel,
-    required this.showImage,
     this.height = 100,
+    required this.showImage,
+    this.imageProvider,
+    this.onTap,
   });
 
   @override
@@ -43,44 +46,37 @@ class HeaderWidget extends StatelessWidget implements PreferredSizeWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(child: Align(
-              alignment: showImage ? Alignment.centerLeft : Alignment.center,
-              child: RichText(
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                text: TextSpan(
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  text: titel,
-                  children: [
-                    TextSpan(text: '\n'),
-                    TextSpan(
-                      text: subtitel,
-                      style: TextStyle(fontSize: 12),
+            Expanded(
+              child: Align(
+                alignment: showImage ? Alignment.centerLeft : Alignment.center,
+                child: RichText(
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  text: TextSpan(
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  ],
+                    text: titel,
+                    children: [
+                      TextSpan(text: '\n'),
+                      TextSpan(text: subtitel, style: TextStyle(fontSize: 12)),
+                    ],
+                  ),
                 ),
               ),
-            )),
+            ),
             if (showImage) ...[
               Flexible(
                 child: GestureDetector(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Profile()),
-                  ),
+                  onTap: onTap,
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: CircleAvatar(
                       radius: 40,
                       backgroundColor: Colors.white,
-                      foregroundImage: NetworkImage(
-                        "https://avatars.githubusercontent.com/u/141134460?s=96&v=4",
-                      ),
-                      onForegroundImageError: (exception, stackTrace) {},
+                      foregroundImage: imageProvider,
                       child: Icon(Icons.person, color: Colors.black),
                     ),
                   ),

@@ -5,8 +5,13 @@ class DashboardDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(
-      child: Center(child: Text('Die UI für Desktops wird noch erstellt.'),),
+    return Scaffold(
+      body: Center(
+        child: Text(
+          'Die UI für Desktops wird noch erstellt.',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
     );
   }
 }

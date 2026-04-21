@@ -1,11 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:stundenplan_pdf_frontend/widgets/event_details_card.dart';
-import 'package:stundenplan_pdf_frontend/widgets/header_widget.dart';
-import 'package:stundenplan_pdf_frontend/widgets/three_buttons_bar.dart';
+import 'package:stundenplan_pdf_frontend/app/app_routes.dart';
+import 'package:stundenplan_pdf_frontend/features/dashboard/ui/widgets/event_details_card.dart';
+import 'package:stundenplan_pdf_frontend/core/widgets/header_widget.dart';
+import 'package:stundenplan_pdf_frontend/core/widgets/three_buttons_bar.dart';
 
-class DashboardMobile extends StatelessWidget {
+class DashboardMobile extends StatefulWidget {
   const DashboardMobile({super.key});
+
+  @override
+  State<DashboardMobile> createState() => _DashboardMobileState();
+}
+
+class _DashboardMobileState extends State<DashboardMobile> {
+  late final PageController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = PageController(viewportFraction: 0.8);
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +37,12 @@ class DashboardMobile extends StatelessWidget {
       EventDetailsCard(),
       EventDetailsCard(),
     ];
-    PageController controller = PageController(viewportFraction: 0.8);
     return Scaffold(
       appBar: HeaderWidget(
         titel: "Hallo ahmad",
         subtitel: DateFormat('HH:mm dd.MM.yyyy').format(DateTime.now()),
         showImage: true,
+        onTap: () => Navigator.pushNamed(context, AppRoutes.profile),
       ),
       body: SafeArea(
         child: Stack(
@@ -60,8 +80,8 @@ class DashboardMobile extends StatelessWidget {
                     ),
                     // platz für notizen
                     Container(
-                      padding: EdgeInsetsGeometry.all(30),
-                      margin: EdgeInsetsGeometry.all(30),
+                      padding: EdgeInsets.all(30),
+                      margin: EdgeInsets.all(30),
                       decoration: BoxDecoration(
                         color: Colors.white.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(10),

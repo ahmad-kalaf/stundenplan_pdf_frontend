@@ -17,10 +17,10 @@ class ThreeButtonsBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsetsGeometry.all(15),
-      padding: EdgeInsetsGeometry.all(5),
+      margin: EdgeInsets.all(15),
+      padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
-        borderRadius: BorderRadiusGeometry.circular(999),
+        borderRadius: BorderRadius.circular(999),
         border: Border.all(color: Colors.blue),
         gradient: LinearGradient(
           colors: [
